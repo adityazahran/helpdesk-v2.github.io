@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.heroes{
+    background-image: url(/img/Kantor.jpeg);
+    position: relative;
+}
+
+.shade{
+    opacity: 50%;
+    background-color: black;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
