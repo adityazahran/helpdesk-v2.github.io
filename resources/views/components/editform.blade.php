@@ -3,7 +3,6 @@
                     class="block md:flex w-full flex-1 mx-auto gap-2 justify-center mb-2 space-y-2 md:space-y-0">
                     <input type="text" name="nama" value="{{ $edit->nama }}" placeholder="Nama Pengisi Tiket"
                         class=" @error('nama') border-red-500 @else border-gray-500 @enderror rounded w-full md:w-1/2 px-2 py-4 border ">
-
                     <select name="divisi" id="" class="@error('divisi') border-red-500 @else border-gray-500 @enderror rounded w-full md:w-1/2 px-2 py-4 ">
                         
                         <option value="" hidden="">Divisi</option>

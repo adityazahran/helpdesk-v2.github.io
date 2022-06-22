@@ -17,9 +17,10 @@ class AdminController extends Controller
 {
     public function admin_dashboard(Request $request)
     {
-        $count = DB::table('tickets')->count();
+        $tiket = Ticket::orderBy('id', 'desc')->whereRaw('date(created_at) = ?', [Carbon::now()->format('Y-m-d')] )->paginate(5);
+        $count = Ticket::orderBy('id', 'desc')->whereRaw('date(created_at) = ?', [Carbon::now()->format('Y-m-d')] )->count();
         return view('admin.dashboard', [
-            'tiket' => Ticket::orderBy('id', 'desc')->whereRaw('date(created_at) = ?', [Carbon::now()->format('Y-m-d')] )->paginate(5),
+            'tiket' => $tiket,
             'hitung' => $count,
         ]); 
     }
@@ -115,11 +116,11 @@ class AdminController extends Controller
         ]);
     }
 
-    public function admin_tutup(Request $request)
+    public function admin_ditutup(Request $request)
     {
         // Table
-        $tiket = Ticket::where('status', 'tutup')->orderBy('id', 'desc')->paginate(5);
-        $count = DB::table('tickets')->where('status', 'tutup')->count();
+        $tiket = Ticket::where('status', 'ditutup')->orderBy('id', 'desc')->paginate(5);
+        $count = DB::table('tickets')->where('status', 'ditutup')->count();
         // $header = 'Tiket tutup';
 
         return view('admin.index', [

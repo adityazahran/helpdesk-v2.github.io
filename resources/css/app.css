@@ -8,6 +8,10 @@
     position: relative;
 }
 
+.wrap-word{
+    word-wrap: break-word;
+}
+
 .shade{
     opacity: 50%;
     background-color: black;

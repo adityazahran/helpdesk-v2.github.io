@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="/css/app.css" rel="stylesheet">
     <title>Admin - Helpdesk PT Tirta Asasta</title>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script>
     <style>
@@ -88,10 +88,10 @@
                                         
                                         <span>Semua Tiket</span>
                                     </div>
-                                    @if($semua > 0)
+                                    @if($nottutup > 0)
                                     <span
                                         class="text-white bg-slate-400 font-semibold text-xs px-2 py-[1px] flex items-center rounded-full">{{
-                                        $semua }}</span>
+                                        $nottutup }}</span>
                                     @endif
                                 </a>
                             </li>
@@ -181,8 +181,9 @@
     </div>
     </div>
     </div>
-
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
     <!-- AlpineJS -->
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <!-- Font Awesome -->

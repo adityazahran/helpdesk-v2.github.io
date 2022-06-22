@@ -31,6 +31,7 @@ class AdminLayout extends Component
         $borrowed = DB::table('tickets')->where('status', 'like', '%Dipinjam%')->count();
         $finish = DB::table('tickets')->where('status', 'like', '%Selesai%')->count();
         $closed = DB::table('tickets')->where('status', 'like', '%Ditutup%')->count();
+        $notclosed = DB::table('tickets')->where('status', '!=', 'Ditutup')->count();
         return view('layouts.admin', [
             'semua' => $all,
             'terima' => $accepted,
@@ -38,6 +39,7 @@ class AdminLayout extends Component
             'pinjam' => $borrowed,
             'selesai' => $finish,
             'ditutup' => $closed,
+            'nottutup' => $notclosed
         ] );
     }
 }

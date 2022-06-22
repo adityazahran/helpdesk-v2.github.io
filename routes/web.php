@@ -25,10 +25,9 @@ Route::get('ticket/create', [TicketsController::class, 'create']);
 Route::post('ticket/create', [TicketsController::class, 'store']);
 Route::get('ticket/search', [TicketsController::class, 'check']);
 Route::get('ticket/search', [TicketsController::class, 'search']);
-Route::get('ticket/{id}/edit', [TicketsController::class, 'edit']);
+
 Route::get('ticket/{id}/detail', [TicketsController::class, 'detail']);
-Route::put('ticket/{id}', [TicketsController::class, 'update']);
-Route::delete('ticket/{id}', [TicketsController::class, 'destroy']);
+
 Route::get('ticket/export', [TicketsController::class, 'export_ticket']);
 
 
@@ -36,6 +35,11 @@ Route::get('ticket/export', [TicketsController::class, 'export_ticket']);
 
 // Admin
 Route::middleware('auth')->group(function () {
+
+    Route::get('ticket/{id}/edit', [TicketsController::class, 'edit']);
+    
+    Route::put('ticket/{id}', [TicketsController::class, 'update']);
+    Route::delete('ticket/{id}', [TicketsController::class, 'destroy']);
 
     Route::get('admin/dashboard', [AdminController::class, 'admin_dashboard']);
     
@@ -47,14 +51,14 @@ Route::middleware('auth')->group(function () {
     Route::get('admin/diterima', [AdminController::class, 'admin_diterima']);
     Route::get('admin/dipinjam', [AdminController::class, 'admin_dipinjam']);
     Route::get('admin/selesai', [AdminController::class, 'admin_selesai']); 
-    Route::get('admin/ditutup', [AdminController::class, 'admin_tutup']); 
+    Route::get('admin/ditutup', [AdminController::class, 'admin_ditutup']); 
 
+    Route::get('register', [UsersController::class, 'regis'])->name('register');
+    Route::post('register', [UsersController::class, 'regisreq'])->name('register');
 });
 
 
 // Auth
-Route::get('register', [UsersController::class, 'regis'])->name('register');
-Route::post('register', [UsersController::class, 'regisreq'])->name('register');
 
 
 Route::middleware('guest')->group(function () {
