@@ -17,7 +17,10 @@ module.exports = {
       container: {
         center: true,    
       }, 
-    },              
+      backgroundImage: {
+      },   
+    },
+           
   }, 
   
   plugins: [ 

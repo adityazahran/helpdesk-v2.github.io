@@ -82,8 +82,8 @@ class TicketsController extends Controller
 
     public function check()
     {
-        $index = Ticket::orderBy('id', 'desc')->paginate(4);
-        return view('tickets.search', ['tickets' => $index]);
+        $tiket = Ticket::orderBy('id', 'desc')->paginate(5);
+        return view('tickets.search', ['tiket' => $tiket]);
     }
 
     public function search(Request $request)
@@ -91,16 +91,16 @@ class TicketsController extends Controller
 
         $cari = $request->cari;
 
-        $index = Ticket::orderBy('id', 'desc')
+        $tiket = Ticket::orderBy('id', 'desc')
             ->where('nama', 'like', "%" . $cari . "%")
             ->orWhere('divisi', 'like', "%" . $cari . "%")
             ->orWhere('topik', 'like', "%" . $cari . "%")
             ->orWhere('alat', '=', "%" . $cari . "%")
             ->paginate(4);
 
-        $index->appends($request->only('cari'));
+        $tiket->appends($request->only('cari'));
 
-        return view('tickets.search', ['tickets' => $index]);
+        return view('tickets.search', ['tiket' => $tiket]);
     }
 
     public function export_ticket()

@@ -1,11 +1,9 @@
 <x-admin-layout>
 
   <hr>
-  <div class="flex justify-between items-center">
-    <span>{{ $hitung }} Ticket</span>
-    <span>{{ $tiket->links() }}</span>
+  <div class="py-1">
+    {{ $tiket->links() }}
   </div>
-  <hr>
   <table class="table-auto border bg-white border-gray-400 overflow-x-auto whitespace-nowrap block">
     <thead class="border-t border-b border-gray-400 bg-gray-300">
 

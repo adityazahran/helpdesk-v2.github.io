@@ -1,121 +1,114 @@
+<?php
+use Carbon\Carbon;
+?>
+
+
 <x-app-layout>
     <div class="min-h-screen">
-        <div class="container px-2">
-            <section class="pt-14 block md:flex bg-heroes">
-                <div class="w-full md:w-1/2 antialiased flex flex-col justify-center mt-12">
-
-                    <div class="-mb-2">
-                        <div id="default-carousel" class="md:relative md:block hidden" data-carousel="static">
-                            <!-- Carousel wrapper -->
-                            <div class="overflow-hidden relative h-56 rounded-lg sm:h-64 xl:h-80 2xl:h-96">
-                                <!-- Item 1 -->
-                                <div class="duration-700 ease-in-out absolute inset-0 transition-all transform translate-x-0 z-20"
-                                    data-carousel-item="">
-                                    <span
-                                        class="absolute top-1/2 left-1/2 text-2xl font-semibold text-white -translate-x-1/2 -translate-y-1/2 sm:text-3xl dark:text-gray-800">First
-                                        Slide</span>
-                                    <img src="\img\Kantor.jpeg"
-                                        class="h-full bg-cover block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2"
-                                        alt="...">
-                                </div>
-                                <!-- Item 2 -->
-                                <div class="duration-700 ease-in-out absolute inset-0 transition-all transform translate-x-full z-10"
-                                    data-carousel-item="">
-                                    <img src="\img\Timur.jpeg"
-                                        class="h-full bg-cover block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2"
-                                        alt="...">
-                                </div>
-                                <!-- Item 3 -->
-                                <div class="duration-700 ease-in-out absolute inset-0 transition-all transform -translate-x-full z-10"
-                                    data-carousel-item="">
-                                    <img src="\img\Barat.jpeg"
-                                        class="h-full bg-cover block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2"
-                                        alt="...">
-                                </div>
-                            </div>
-                            <!-- Slider indicators -->
-                            <div class="flex absolute bottom-5 left-1/2 z-30 space-x-3 -translate-x-1/2">
-                                <button type="button" class="w-3 h-3 rounded-full bg-white dark:bg-gray-800"
-                                    aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
-                                <button type="button"
-                                    class="w-3 h-3 rounded-full bg-white/50 dark:bg-gray-800/50 hover:bg-white dark:hover:bg-gray-800"
-                                    aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
-                                <button type="button"
-                                    class="w-3 h-3 rounded-full bg-white/50 dark:bg-gray-800/50 hover:bg-white dark:hover:bg-gray-800"
-                                    aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
-                            </div>
-                            <!-- Slider controls -->
-                            <button type="button"
-                                class="flex absolute top-0 left-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none"
-                                data-carousel-prev="">
-                                <span
-                                    class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                                    <svg class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none"
-                                        stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M15 19l-7-7 7-7"></path>
-                                    </svg>
-                                    <span class="hidden">Previous</span>
-                                </span>
-                            </button>
-                            <button type="button"
-                                class="flex absolute top-0 right-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none"
-                                data-carousel-next="">
-                                <span
-                                    class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                                    <svg class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none"
-                                        stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M9 5l7 7-7 7"></path>
-                                    </svg>
-                                    <span class="hidden">Next</span>
-                                </span>
-                            </button>
+        <a href="/ticket/create">
+            <section class="hidden md:block relative bg-[url('/img/Kantor.jpeg')] bg-cover bg-center pt-64 group">
+                    <div class="bg-black/60 py-3 bottom-0 w-full group-hover:bg-black/80 transition-colors duration-75">
+                        <div class="container px-8">
+                            <div class="text-right text-white leading-loose">
+                                <h1 class="font-medium text-5xl">Helpdesk Karyawan PT Tirta Asasta</h1>
+                                <span>Buat Tiket Baru Anda Disini </span>
                         </div>
-
                     </div>
-
-                    <h1
-                        class="font-bold text-5xl mt-3 md:text-left text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-600">
-                        PT Tirta Asasta
-                    </h1>
-
-                    <span
-                        class="font-medium md:font-semibold text-2xl md:text-left text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-600">
-                        Selamat datang di Helpdesk Karyawan
-                    </span>
-
-                </div>
-
-                <div class="w-full items-center -mt-16 md:w-1/2 gap-x-5 block md:flex px-4">
-                    <a href="/ticket/create"
-                        class="mt-20 border-2 space-y-6 text-center border-blue-500 bg-blue-500 hover:bg-blue-400 flex flex-col items-center transition-all duration-500  px-12 md:px-14 py-28 w-full md:w-1/2 rounded font-semibold text-white">
-
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-
-                        <span class="text-2xl">Buat Tiket Baru</span>
-                    </a>
-
-                    <a href="/ticket/search"
-                        class="mt-20 border-2 space-y-6 text-center border-blue-500 bg-blue-500 hover:bg-blue-400 flex flex-col items-center transition-all duration-500  px-12 md:px-14 py-28 w-full md:w-1/2 rounded font-semibold text-white">
-
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
-                        </svg>
-
-                        <span class="text-2xl">Cek Status Tiket</span>
-                    </a>
-
                 </div>
             </section>
+        </a>
+            <section class="block md:hidden h-[80vh] relative bg-[url('/img/Air.jpg')] bg-cover bg-center group">
+                <div class="bg-black/60 w-full h-full transition-colors duration-75">
+                    <div class="container px-2">
+                        <div class="text-center pt-24 text-white leading-loose">
+                            <h1 class=" text-4xl mb-16 font-bold antialiased bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-300">Helpdesk Karyawan <br> <span class=""> PT Tirta Asasta</span></h1>
+                            
+                            <a href="" class="px-6 rounded py-4 bg-blue-600 border-2 border-blue-600 hover:border-blue-100 hover:bg-blue-500 transition-colors duration-200">Buat Tiket Baru Anda Disini</a>
 
-            <div class="flex justify-end -mt-4 -mr-8 justify-items-end">
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pt-16 md:pb-16 pb-44">
+            <div class="text-center">
+                <h2 class="text-3xl font-bold antialiased bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-300">Tiket Terbaru</h2>
+                <p class="font-bold antialiased text-blue-600">Tiket yang baru dibuat, akan ditampilkan disini</p>
+            </div>
+
+            <div class="mt-8 w-11/12 md:w-9/12 mx-auto">
+
+                <div class="mb-2 md:mb-0">{{ $tiket->links() }}</div>
+                <hr class="">
+                @foreach($tiket as $t)
+                    <a class="cursor-pointer flex px-4 my-0 py-8 justify-between border-b border-gray-300"  data-bs-toggle="modal" data-bs-target="#exampleModal-{{ $t->id }}">
+                        <div class="">
+                            <div class="">
+                                <h2 class="text-blue-500 font-semibold text-base">{{ $t->divisi }}</h2>
+                                <h3 class="text-sm">{{ $t->topik }}</h3>
+                            </div>
+                        </div>
+                        <div class="flex gap-x-2 pr-0 md:pr-10 items-center">
+                            <div class="">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                  </svg>
+                            </div>
+                            <div class="">
+                                <p class="font-semibold text-blue-500">Tanggal Dibuat : </p>
+                                <p class="text-sm">{{ $t->created_at->format('d M Y') }}</p>
+                            </div>
+                            
+                        </div>
+                    </a>
+                    <!-- Modal -->
+                <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+                id="exampleModal-{{ $t->id }}" tabindex="-1" aria-labelledby="exampleModal-{{ $t->id }}-Label" aria-hidden="true">
+                <div class="modal-dialog relative w-auto pointer-events-none">
+                  <div
+                    class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
+                    <div
+                      class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
+                      <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModal-{{ $t->id }}-Label">{{ $t->topik }}</h5>
+                      <button type="button"
+                        class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
+                        data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                        
+                    <div class="modal-body leading-[10px] whitespace-pre-wrap text-left relative flex-wrap wrap-word p-4">
+                      <p>nama   : {{ $t->nama }}</p>
+                      <p>divisi   : {{ $t->divisi }}</p>
+                      <p>alat      : {{ $t->alat }}</p>
+    
+                      @if ($t->keterangan != '-')
+                      <p class="font-bold">detail :</p>
+                      <p>{{ $t->keterangan }}</p>
+                      <hr class="mt-4">
+                      @endif
+                      {{-- Lampiran Gambar : --}}
+                      @if($t->file != null)
+                      <h3 class="mb-4 font-semibold">Lampiran Gambar : </h3>
+                      <img width="300px" src="{{ url('/data_file/'.$t->file) }}">
+                      @endif
+                    </div>
+    
+                    <div
+                      class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
+                      <button type="button"
+                        class="px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
+                        data-bs-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                @endforeach
+            </div>
+            
+        </section>
+
+        <div class="container px-2">
+            <div class="flex justify-end -mt-28 -mr-8 justify-items-end">
                 @if(session()->has('success'))
                 <div id="toast-success"
                     class="flex items-center w-full max-w-xs p-4 mb-4 border border-gray-300 text-gray-500 bg-white rounded-lg shadow-2xl dark:text-gray-400 dark:bg-gray-800"
@@ -145,7 +138,7 @@
 
             <section class="py-20 hidden md:block">
                 <div class="text-center pb-6">
-                    <h1 class="text-3xl font-bold">Status Pemrosesan Masalah</h1>
+                    <h1 class="text-3xl font-bold antialiased bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-300"">Status Pemrosesan Masalah</h1>
                 </div>
                 <div class="w-11/12 p-16 border-4 border-gray-600 rounded-lg mx-auto">
                     <div class="w-9/12 mx-auto">
