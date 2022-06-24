@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ChartsController;
+use App\Http\Controllers\ExportController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TicketsController;
 use App\Http\Controllers\UsersController;
@@ -52,9 +53,13 @@ Route::middleware('auth')->group(function () {
     Route::get('admin/dipinjam', [AdminController::class, 'admin_dipinjam']);
     Route::get('admin/selesai', [AdminController::class, 'admin_selesai']); 
     Route::get('admin/ditutup', [AdminController::class, 'admin_ditutup']); 
-
+    
     Route::get('register', [UsersController::class, 'regis'])->name('register');
     Route::post('register', [UsersController::class, 'regisreq'])->name('register');
+
+    Route::get('admin/export', [ExportController::class, 'export_index']); 
+    Route::get('admin/export', [ExportController::class, 'export_cek']); 
+    Route::get('admin/export_', [ExportController::class, 'export_filter_ticket']); 
 });
 
 

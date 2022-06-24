@@ -1,7 +1,7 @@
 <x-app-layout title="Cek Status Tiket">
   <div class="container min-h-screen">
 
-    <div class="text-center mt-20 md:mt-8 mb-4 md:px-0 px-4">
+    <div class="text-center mt-20 md:mt-8 mb-4 md:px-0 px-4 font-bold antialiased bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-blue-600">
       <h3 class="font-bold text-3xl">Cek Status Tiket</h3>
       <p class="text-lg">Masukkan Nama atau Divisi Untuk Mengecek Status Tiket<a href="/ticket/"
           class="cursor-default">.</a></p>
