@@ -103,10 +103,7 @@ class TicketsController extends Controller
         return view('tickets.search', ['tiket' => $tiket]);
     }
 
-    // public function export_ticket()
-    // {
-    //     return Excel::download(new TicketsExport, 'Helpdesk.xlsx');
-    // }
+
 
     public function detail($id)
     {

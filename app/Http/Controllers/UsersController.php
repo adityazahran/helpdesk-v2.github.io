@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ticket;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
@@ -40,16 +43,26 @@ class UsersController extends Controller
     {
         return view('auth.login');
     }
-
+    
     public function loginreq(Request $request)
     {
         $attributes = $request->validate([
             'username' => ['required', 'alpha_num'],
             'password' => ['required']
         ]);
-
+        
+        
+        
         if (Auth::attempt($attributes)) {
-            return redirect('/')->with('success', 'Admin berhasil masuk');
+            $cari = Ticket::where("status", "Diterima")->where('created_at', '<=', Carbon::now()->subDays(3))->count();
+            $status = DB::table('tickets')->where('status', 'like', '%Diterima%')->count();
+            
+            session()->flash('warning', 'Terdapat ' .$cari. ' Tiket yang sudah melewati 3 hari penerimaan, dimohon segera');
+            session()->flash('success', 'Admin telah berhasil masuk');
+
+            return redirect('/');
+            // return view('home', ['search' =>$cari, 'status' =>$status]);
+
         }
 
         throw ValidationException::withMessages([

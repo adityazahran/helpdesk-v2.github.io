@@ -147,7 +147,7 @@ class AdminController extends Controller
         $header = 'Hasil pencarian : ' . $cari;
 
         $index->appends($request->only('cari'));
-        return view('admin.index', [
+        return view('admin.search', [
             'tiket' => $index,
             'hitung' => $count,
             'header' => $header

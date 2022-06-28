@@ -37,7 +37,9 @@ class="block md:flex w-full flex-1 mx-auto gap-2 justify-center mb-4 md:mb-2 spa
 <select name="topik" id="" class="@error('topik') border-red-500 @else border-gray-500 @enderror masalah rounded w-full md:w-1/2 px-2 py-4">
     <option value=""  hidden>Isu Masalah</option>
     <option value="Alat Rusak" <?php  if($edit->topik == "Alat Rusak"){echo "selected='selected'";} ?>>Alat Rusak</option>
+    <option value="Peminjaman Alat" <?php  if($edit->topik == "Peminjaman Alat"){echo "selected='selected'";} ?>>Peminjaman Alat</option>
     <option value="Masalah Interkoneksi" <?php  if($edit->topik == "Masalah Interkoneksi"){echo "selected='selected'";} ?>>Masalah Interkoneksi</option>
+    <option value="Sistem Error / Tidak Berfungsi" <?php  if($edit->topik == "Sistem Error / Tidak Berfungsi"){echo "selected='selected'";} ?>>Sistem Error / Tidak Berfungsi</option>
     <option value="Lain-Lain" <?php  if($edit->topik == "Lain-Lain"){echo "selected='selected'";} ?>>Lain-Lain</option>
 </select>
 
@@ -52,8 +54,9 @@ class="block md:flex w-full flex-1 mx-auto gap-2 justify-center mb-4 md:mb-2 spa
 <select name="alat" id="" class="@error('alat') border-red-500 @else border-gray-500 @enderror alat rounded w-full md:w-1/2 px-2 py-4">
     <option value="" hidden>Alat-Alat</option>
     <option  <?php  if($edit->alat == "PC"){echo "selected='selected'";} ?> value="PC">PC</option>
-    <option  <?php  if($edit->alat == "Printer"){echo "selected='selected'";} ?> value="Printer">Printer</option>
+    <option  <?php  if($edit->alat == "AIO"){echo "selected='selected'";} ?> value="AIO">AIO</option>
     <option  <?php  if($edit->alat == "Laptop"){echo "selected='selected'";} ?>value="Laptop">Laptop</option>
+    <option  <?php  if($edit->alat == "Printer"){echo "selected='selected'";} ?> value="Printer">Printer</option>
     <option  <?php  if($edit->alat == "Mouse"){echo "selected='selected'";} ?>value="Mouse">Mouse</option>
     <option  <?php  if($edit->alat == "Keyboard"){echo "selected='selected'";} ?>value="Keyboard">Keyboard</option>
     <option  <?php  if($edit->alat == "Wi-fi"){echo "selected='selected'";} ?>value="Wi-fi">Wi-fi</option>

@@ -223,29 +223,33 @@ use Carbon\Carbon;
         <td class="py-4 text-gray-800 px-4 text-center">
           {{-- <a href="/ticket/{{ $t->id }}/detail" class="font-semibold">Detail</a> --}}
           <!-- Button trigger modal -->
-          <button type="button" class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <button type="button" class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ $t->id }}">
             Detail
           </button>
 
           <!-- Modal -->
           <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
-            id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            id="exampleModal-{{ $t->id }}" tabindex="-1" aria-labelledby="exampleModal-{{ $t->id }}-Label" aria-hidden="true">
             <div class="modal-dialog relative w-auto pointer-events-none">
               <div
                 class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
                 <div
                   class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
-                  <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalLabel">{{ $t->topik }}</h5>
+                  <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModal-{{ $t->id }}-Label">{{ $t->topik }}</h5>
                   <button type="button"
                     class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
                     data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                     
-                <div class="modal-body leading-3 whitespace-pre-wrap text-left relative flex-wrap wrap-word p-4">
-                  <p>alat : {{ $t->alat }}</p>
+                <div class="modal-body leading-[10px] whitespace-pre-wrap text-left relative flex-wrap wrap-word p-4">
+                  <p>nama   : {{ $t->nama }}</p>
+                  <p>divisi   : {{ $t->divisi }}</p>
+                  <p>alat      : {{ $t->alat }}</p>
 
                   @if ($t->keterangan != '-')
-                  <p>detail :<p>{{ $t->keterangan }}</p></p>
+                  <p class="font-bold">detail :</p>
+                  <p>{{ $t->keterangan }}</p>
+                  <hr class="mt-4">
                   @endif
                   {{-- Lampiran Gambar : --}}
                   @if($t->file != null)
@@ -287,7 +291,7 @@ use Carbon\Carbon;
 
             <button
               class="block text-white bg-red-500 hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded text-sm p-[2px] text-center"
-              type="button" data-modal-toggle="popup-modal">
+              type="button" data-modal-toggle="popup-modal-{{ $t->id }}">
               <svg xmlns="http://www.w3.org/2500/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                 stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -295,14 +299,14 @@ use Carbon\Carbon;
               </svg>
             </button>
 
-            <div id="popup-modal" tabindex="-1"
+            <div id="popup-modal-{{ $t->id }}" tabindex="-1"
               class="hidden overflow-y-auto bg-black/50 overflow-x-hidden fixed top-0 right-0 left-0 z-50 md:inset-0 h-modal md:h-full justify-center items-center"
               aria-hidden="true">
               <div class="relative p-4 w-full max-w-md h-full md:h-auto">
                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                   <button type="button"
                     class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
-                    data-modal-toggle="popup-modal">
+                    data-modal-toggle="popup-modal-{{ $t->id }}">
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                       <path fill-rule="evenodd"
                         d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
@@ -316,11 +320,11 @@ use Carbon\Carbon;
                         d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
                     <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Tiket ini akan dihapus</h3>
-                    <button type="submit" data-modal-toggle="popup-modal" type="button"
+                    <button type="submit" data-modal-toggle="popup-modal-{{ $t->id }}" type="button"
                       class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
                       Iya
                     </button>
-                    <button data-modal-toggle="popup-modal" type="button"
+                    <button data-modal-toggle="popup-modal-{{ $t->id }}" type="button"
                       class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Tidak</button>
                   </div>
                 </div>

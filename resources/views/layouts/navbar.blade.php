@@ -41,12 +41,12 @@
                 @guest
                 <li
                     class="block px-0 md:px-4 py-2 mt-2 font-semibold bg-transparent rounded-lg md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline transition-all duration-200">
-                    <a href="{{ route('login') }}">Login</a>
+                    <a href="{{ route('login') }}">Admin Login</a>
                 </li>
-                <li
+                {{-- <li
                     class="block px-0 md:px-4 py-2 mt-2 font-semibold bg-transparent rounded-lg md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline transition-all duration-200">
                     <a href="{{ route('register') }}">Register</a>
-                </li>
+                </li> --}}
                 @endguest
 
                 @auth
@@ -93,7 +93,7 @@
                                     d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                             </svg>
                         </div>
-                        <input type="search" id="default-search"
+                        <input type="search" name="cari" id="default-search"
                             class="block p-3 pl-11   w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
                             placeholder="Cari Nama, Divisi...." required="">
                         <button type="submit"

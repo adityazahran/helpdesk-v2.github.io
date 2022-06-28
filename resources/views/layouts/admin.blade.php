@@ -49,23 +49,42 @@
 
 <body class="bg-gray-100 flex justify-between font-family-karla transition-all duration-200">
     <aside class="fixed bg-sidebar h-full min-h-screen w-64 hidden sm:block shadow-xl">
-        <div class="p-6">
+        <div class="px-6 pt-6 pb-4">
             <a href="/admin" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">Admin</a>
             <a href="/ticket/create"
                 class="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
                 <i class="fas fa-plus mr-3"></i> New Report
             </a>
         </div>
+        <div class="px-6 pb-6 mb-2">
+            <form action="/admin/search" method="get" class="mt-2">
+                <label for="default-search"
+                    class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-gray-300">Search</label>
+                <div class="relative">
+                    <input type="search" name="cari" id="default-search"
+                        class="block p-3 pl-11   w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                        placeholder="Cari..." required="">
+                    <button type="submit"
+                        class="text-white absolute right-2 bottom-1.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded text-sm px-3 py-[6px]">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                    </button>
+                </div>
+            </form>
+        </div>
         <nav class="text-white text-base font-semibold pt-3">
             <a href="/admin/dashboard"
-                class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+                class="flex items-center @if(url()->current() == url('/admin/dashboard')) active-nav-link @endif text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
                 <i class="fas fa-tachometer-alt mr-3"></i>
                 Dashboard
             </a>
             <div id="accordion-collapse" data-accordion="collapse">
                 <h2 id="accordion-flush-heading-2">
                     <button type="button"
-                        class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item justify-between w-full nav-item text-base font-semibold"
+                        class="flex items-center @if(url()->current() == url('/admin/')) active-nav-link @endif text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item justify-between w-full nav-item text-base font-semibold"
                         data-accordion-target="#accordion-flush-body-2">
                         <div class="text-white">
                             <i class="fas fa-table mr-3 "></i>
@@ -96,7 +115,7 @@
                                 </a>
                             </li>
                             <li class="py-2 px-4">
-                                <a href="/admin/diterima" class="flex justify-between">
+                                <a href="/admin/diterima" class="@if(url()->current() == url('/admin/diterima')) active-nav-link @endif flex justify-between">
                                     <div class="">
                                         
                                         <span>Diterima</span>
@@ -109,7 +128,7 @@
                                 </a>
                             </li>
                             <li class="py-2 px-4">
-                                <a href="/admin/diproses" class="flex justify-between">
+                                <a href="/admin/diproses" class="@if(url()->current() == url('/admin/diproses')) active-nav-link @endif flex justify-between">
                                     <div class="">
                                         
                                         <span>Diproses</span>
@@ -122,7 +141,7 @@
                                 </a>
                             </li>
                             <li class="py-2 px-4">
-                                <a href="/admin/dipinjam" class="flex justify-between">
+                                <a href="/admin/dipinjam" class="@if(url()->current() == url('/admin/dipinjam')) active-nav-link @endif flex justify-between">
                                     <div class="">
                                         
                                         <span>Dipinjam</span>
@@ -136,7 +155,7 @@
                             </li>
 
                             <li class="py-2 px-4">
-                                <a href="/admin/selesai" class="flex justify-between">
+                                <a href="/admin/selesai" class="@if(url()->current() == url('/admin/selesai')) active-nav-link @endif flex justify-between">
                                     <div class="">
                                         
                                         <span>Selesai</span>
@@ -150,15 +169,16 @@
                     </div>
                 </div>
             </div>
-            <a href="/admin/ditutup" class="flex items-center active-nav-link text-white py-4 pl-6 nav-item">
+            <a href="/admin/ditutup" class="flex items-center @if(url()->current() == url('/admin/ditutup')) active-nav-link @endif
+                  text-white py-4 pl-6 nav-item">
                 <i class="fas fa-sticky-note mr-3"></i>
                 Tiket Tutup
             </a>
-            <a href="/register/" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+            <a href="/register/" class="flex items-center @if(url()->current() == url('/register')) active-nav-link @endif text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
                 <i class="fas fa-align-left mr-3"></i>
                 Register new Admin
             </a>
-            <a href="/ticket/export" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+            <a href="/admin/export" class="flex items-center @if(url()->current() == url('/admin/export')) active-nav-link @endif text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
                 <i class="fas fa-file-export mr-3"></i>
                 Export Ticket
             </a>

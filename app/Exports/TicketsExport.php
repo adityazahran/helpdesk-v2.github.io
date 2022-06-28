@@ -26,9 +26,7 @@ class TicketsExport implements FromQuery
     
         public function query()
         {
-            $data = DB::table('tickets')
-            ->whereBetween('created_at',[ $this->dari,$this->sampai])
-            ->orderBy('id');
+            $data = Ticket::orderBy('id', 'desc')->where('created_at', '>=' , $this->dari ,'and','created_at', '<=' , $this->sampai);
     
     
             return $data;

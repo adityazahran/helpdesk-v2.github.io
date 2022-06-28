@@ -58,8 +58,9 @@ Route::middleware('auth')->group(function () {
     Route::post('register', [UsersController::class, 'regisreq'])->name('register');
 
     Route::get('admin/export', [ExportController::class, 'export_index']); 
-    Route::get('admin/export', [ExportController::class, 'export_cek']); 
     Route::get('admin/export_', [ExportController::class, 'export_filter_ticket']); 
+    Route::get('admin/export__', [ExportController::class, 'export_all_ticket']); 
+    Route::get('admin/export/cek', [ExportController::class, 'export_cek']); 
 });
 
 

@@ -4,19 +4,32 @@ use Carbon\Carbon;
 
 
 <x-app-layout>
-    <div class="min-h-screen">
-        <a href="/ticket/create">
-            <section class="hidden md:block relative bg-[url('/img/Kantor.jpeg')] bg-cover bg-center pt-72 group">
-                    <div class="bg-black/60 py-3 bottom-0 w-full group-hover:bg-black/80 transition-colors duration-75">
-                        <div class="container px-8">
-                            <div class="text-right text-white leading-loose">
-                                <h1 class="font-medium text-5xl">Helpdesk Karyawan PT Tirta Asasta</h1>
-                                <span>Buat Tiket Baru Anda Disini </span>
+    @if(session()->has('warning'))
+    <div id="alert-4" class="flex p-4 bg-yellow-100 dark:bg-yellow-200" role="alert">
+        <svg class="flex-shrink-0 w-5 h-5 text-yellow-700 dark:text-yellow-800" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+        <div class="ml-3 text-sm font-medium text-yellow-700 dark:text-yellow-800">
+            {{ session()->get('warning') }} <a href="/admin/" class="font-semibold underline hover:text-yellow-800 dark:hover:text-yellow-900">Diproses</a>.
+        </div>
+        <button type="button" class="ml-auto -mx-1.5 -my-1.5 bg-yellow-100 text-yellow-500 rounded-lg focus:ring-2 focus:ring-yellow-400 p-1.5 hover:bg-yellow-200 inline-flex h-8 w-8 dark:bg-yellow-200 dark:text-yellow-600 dark:hover:bg-yellow-300" data-dismiss-target="#alert-4" aria-label="Close">
+          <span class="sr-only">Close</span>
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+        </button>
+      </div>
+    @endif
+        <div class="">
+            <a href="/ticket/create">
+                <section class="hidden md:block relative bg-[url('/img/Kantor.jpeg')] bg-cover bg-center pt-72 group">
+                        <div class="bg-black/60 py-3 bottom-0 w-full group-hover:bg-black/80 transition-colors duration-75">
+                            <div class="container px-8">
+                                <div class="text-right text-white leading-loose">
+                                    <h1 class="font-medium text-5xl">Helpdesk Karyawan PT Tirta Asasta</h1>
+                                    <span>Buat Tiket Baru Anda Disini </span>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section>
-        </a>
+                </section>
+            </a>
+        </div>
             <section class="block md:hidden h-[80vh] relative bg-[url('/img/Air.jpg')] bg-cover bg-center group">
                 <div class="bg-black/60 w-full h-full transition-colors duration-75">
                     <div class="container px-2">
@@ -30,7 +43,36 @@ use Carbon\Carbon;
                 </div>
             </div>
         </section>
+        
+        <div class="flex flex-col justify-end absolute bottom-3 right-4 items-end w-3/12">
+            @if(session()->has('success'))
+            <div id="toast-success" class="flex items-center border  w-full max-w-xs p-4 mb-2 text-gray-500 bg-white rounded-lg shadow-lg dark:text-gray-400 dark:bg-gray-800" role="alert">
+                <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                </div>
+                <div class="ml-3 text-sm font-normal">{{ session()->get('success') }}</div>
+                <button type="button" class="ml-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700" data-dismiss-target="#toast-success" aria-label="Close">
+                    <span class="sr-only">Close</span>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                </button>
+            </div>
+            @endif
+            {{-- @if(session()->has('warning'))
+            <div id="toast-success" class="flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow-lg dark:text-gray-400 dark:bg-gray-800" role="alert">
+                <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                </div>
+                <div class="ml-3 text-sm font-normal">{{ session()->get('warning') }}</div>
+                <button type="button" class="ml-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700" data-dismiss-target="#toast-success" aria-label="Close">
+                    <span class="sr-only">Close</span>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                </button>
+            </div>
+            @endif --}}
+        </div>
+    </div>
 
+    
         <section class="pt-14 md:pb-16 pb-44">
             <div class="text-center">
                 <h2 class="text-3xl font-bold antialiased bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-300">Tiket Terbaru</h2>
@@ -163,5 +205,5 @@ use Carbon\Carbon;
             </section>
 
         </div>
-    </div>
+    
 </x-app-layout>

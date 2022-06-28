@@ -18,7 +18,9 @@
                     <select name="topik" id="" class="@error('topik') border-red-500 @else border-gray-500 @enderror masalah rounded w-full md:w-1/2 px-2 py-4">
                         <option value="" hidden>Isu Masalah</option>
                         <option value="Alat Rusak">Alat Rusak</option>
+                        <option value="Peminjaman Alat">Peminjaman Alat</option>
                         <option value="Masalah Interkoneksi">Masalah Interkoneksi</option>
+                        <option value="Sistem Tidak Berfungsi">Sistem Tidak Berfungsi</option>
                         <option value="Lain-Lain">Lain-Lain</option>
                     </select>
 
@@ -33,6 +35,7 @@
                     <select name="alat" id="" class="@error('alat') border-red-500 @else border-gray-500 @enderror alat rounded w-full md:w-1/2 px-2 py-4" disabled="disabled">
                         <option value="" hidden>Alat-Alat</option>
                         <option value="PC">PC</option>
+                        <option value="AIO">AIO</option>
                         <option value="Printer">Printer</option>
                         <option value="Laptop">Laptop</option>
                         <option value="Mouse">Mouse</option>
