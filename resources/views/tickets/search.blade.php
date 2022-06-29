@@ -25,7 +25,7 @@
           <thead class="border-t border-b border-gray-400 bg-gray-300">
       
             <tr class="text-gray-700">
-              <th class="py-2 font-semibold w-1/12">ID</th>
+              <th class="py-2 font-semibold w-1/12">No</th>
               <th class="py-2 font-semibold w-2/12">nama</th>
               <th class="py-2 font-semibold w-2/12">topik</th>
               <th class="py-2 font-semibold w-3/12">status</th>
@@ -37,8 +37,8 @@
           </thead>
       
           <tbody>
-      
-            @foreach ($tiket as $t)
+
+            @foreach ($tiket as $index => $t)
       
             <tr class="">
               <td class="py-4 text-gray-800 px-2 text-center">{{ $t->id }}</td>
@@ -121,6 +121,9 @@
               </td>
       
               {{-- Ticket Edit & Delete --}}
+              @auth
+                
+              
               <td class="py-4 grid gap-y-1 text-gray-800 px-2 text-center" class="">
       
                 <a href="/ticket/{{ $t->id }}/edit"
@@ -183,7 +186,7 @@
       
                 </form>
               </td>
-      
+              @endauth
             </tr>
       
             @endforeach

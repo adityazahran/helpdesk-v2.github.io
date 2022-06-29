@@ -50,7 +50,7 @@
 <body class="bg-gray-100 flex justify-between font-family-karla transition-all duration-200">
     <aside class="fixed bg-sidebar h-full min-h-screen w-64 hidden sm:block shadow-xl">
         <div class="px-6 pt-6 pb-4">
-            <a href="/admin" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">Admin</a>
+            <a href="/" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">Admin</a>
             <a href="/ticket/create"
                 class="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
                 <i class="fas fa-plus mr-3"></i> New Report
@@ -170,7 +170,7 @@
                 </div>
             </div>
             <a href="/admin/ditutup" class="flex items-center @if(url()->current() == url('/admin/ditutup')) active-nav-link @endif
-                  text-white py-4 pl-6 nav-item">
+                opacity-75 hover:opacity-100 text-white py-4 pl-6 nav-item">
                 <i class="fas fa-sticky-note mr-3"></i>
                 Tiket Tutup
             </a>

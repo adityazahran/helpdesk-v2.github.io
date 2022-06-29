@@ -10,7 +10,7 @@ class HomeController extends Controller
 {
     public function __invoke(){
 
-            $index = Ticket::orderBy('id', 'desc')->Paginate(4);
+            $index = Ticket::orderBy('id', 'desc')->Paginate(5);
             return view('home', ['tiket' => $index]);
     
         }

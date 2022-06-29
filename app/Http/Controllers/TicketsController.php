@@ -82,7 +82,7 @@ class TicketsController extends Controller
 
     public function check()
     {
-        $tiket = Ticket::orderBy('id', 'desc')->paginate(5);
+        $tiket = Ticket::orderBy('id', 'desc')->paginate(6);
         return view('tickets.search', ['tiket' => $tiket]);
     }
 
@@ -96,7 +96,7 @@ class TicketsController extends Controller
             ->orWhere('divisi', 'like', "%" . $cari . "%")
             ->orWhere('topik', 'like', "%" . $cari . "%")
             ->orWhere('alat', '=', "%" . $cari . "%")
-            ->paginate(4);
+            ->paginate(6);
 
         $tiket->appends($request->only('cari'));
 

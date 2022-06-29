@@ -95,7 +95,7 @@
                         </div>
                         <input type="search" name="cari" id="default-search"
                             class="block p-3 pl-11   w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
-                            placeholder="Cari Nama, Divisi...." required="">
+                            placeholder="Cari Tiket anda disini..." required="">
                         <button type="submit"
                             class="text-white absolute right-2 bottom-1.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded text-sm px-3 py-[6px]">Search</button>
                     </div>

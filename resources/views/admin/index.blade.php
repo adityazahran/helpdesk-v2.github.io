@@ -78,13 +78,15 @@
                   <p>nama   : {{ $t->nama }}</p>
                   <p>divisi   : {{ $t->divisi }}</p>
                   <p>alat      : {{ $t->alat }}</p>
-
-                  @if ($t->keterangan != '-')
-                  <p class="font-bold">detail :</p>
-                  <p>{{ $t->keterangan }}</p>
-                  <hr class="mt-4">
-                  @endif
-                  {{-- Lampiran Gambar : --}}
+                <hr class="mt-4">
+                  <div class="tracking-wide leading">
+                      <p class="font-semibold">detail :</p>
+                      @if ($t->keterangan = '-')
+                      <p>Pengisi tiket tidak memberikan keterangan lanjut.</p>
+                      @else
+                      <p>{{ $t->keterangan }}</p>
+                      @endif
+                  </div>
                   @if($t->file != null)
                   <h3 class="mb-4 font-semibold">Lampiran Gambar : </h3>
                   <img width="300px" src="{{ url('/data_file/'.$t->file) }}">

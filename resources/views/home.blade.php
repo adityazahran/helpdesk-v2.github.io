@@ -36,7 +36,7 @@ use Carbon\Carbon;
                         <div class="text-center pt-24 text-white leading-loose">
                             <h1 class=" text-4xl mb-16 font-bold antialiased bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-300">Helpdesk Karyawan <br> <span class=""> PT Tirta Asasta</span></h1>
                             
-                            <a href="" class="px-6 rounded py-4 bg-blue-600 border-2 border-blue-600 hover:border-blue-100 hover:bg-blue-500 transition-colors duration-200">Buat Tiket Baru Anda Disini</a>
+                            <a href="/ticket/create" class="px-6 rounded py-4 bg-blue-600 border-2 border-blue-600 hover:border-blue-100 hover:bg-blue-500 transition-colors duration-200">Buat Tiket Baru Anda Disini</a>
 
 
                     </div>
@@ -120,12 +120,16 @@ use Carbon\Carbon;
                       <p>nama   : {{ $t->nama }}</p>
                       <p>divisi   : {{ $t->divisi }}</p>
                       <p>alat      : {{ $t->alat }}</p>
-    
-                      @if ($t->keterangan != '-')
-                      <p class="font-bold">detail :</p>
-                      <p>{{ $t->keterangan }}</p>
+                    <hr class="mt-2">
+                      <div class="tracking-wide leading">
+                          <p class="font-semibold">detail :</p>
+                          @if ($t->keterangan = '-')
+                          <p>Pengisi tiket tidak Memberikan keterangan lanjut.</p>
+                          @else
+                          <p>{{ $t->keterangan }}</p>
+                          @endif
+                      </div>
                       <hr class="mt-4">
-                      @endif
                       {{-- Lampiran Gambar : --}}
                       @if($t->file != null)
                       <h3 class="mb-4 font-semibold">Lampiran Gambar : </h3>
@@ -147,63 +151,29 @@ use Carbon\Carbon;
             
         </section>
 
-        <div class="container px-2">
-            <section class="py-20 hidden md:block">
-                <div class="text-center pb-6">
-                    <h1 class="text-3xl font-bold antialiased bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-300"">Status Pemrosesan Masalah</h1>
-                </div>
-                <div class="w-11/12 p-16 border-4 border-gray-600 rounded-lg mx-auto">
-                    <div class="w-9/12 mx-auto">
-                        <canvas id="myChart" height="30vh" width="80vw"></canvas>
+        <section class="pb-8 hidden md:block">
+            <div class="container px-6">
+                <div class="w-10/12  mx-auto px-8 py-10 bg-blue-200">
+                    <div class="mb-2 leading-loose">
+                        <h1 class="text-3xl">Buat Tiket Anda</h1>
+                        <p>Jika Anda mengalami masalah dengan aplikasi atau perangkat. Silahkan Laporkan masalah disini.</p>
                     </div>
+                    <a href="/ticket/create" class=" font-semibold text-white px-5 rounded py-2 bg-blue-600 border-2 border-blue-600 hover:border-blue-100 hover:bg-blue-500 transition-colors duration-200">
+                        Buat Tiket
+                    </a>
                 </div>
-                {{-- Count Pemrosesan --}}
-                <?php 
-                  $terima = DB::table('tickets')->where('status', 'like', '%Diterima%')->count();
-                  $proses = DB::table('tickets')->where('status', 'like', '%Diproses%')->count();
-                  $pinjam = DB::table('tickets')->where('status', 'like', '%Dipinjam%')->count();
-                  $selesai = DB::table('tickets')->where('status', 'like', '%Selesai%')->count();
-                ?>
+            </div>
+        </section>
 
-                <script>
-                    const ctx = document.getElementById('myChart').getContext('2d');
-                  const myChart = new Chart(ctx, {
-                      type: 'bar',
-                      data: {
-                          labels: ['Diterima', 'Diroses', 'Dipinjam', 'Selesai'],
-                          datasets: [{
-                              label: 'Proses',
-                              data: [{{ $terima }},{{ $proses }}, {{ $pinjam }}, {{ $selesai }} ],
-                              backgroundColor: [
-                                'rgba(255, 99, 132, 1)',
-                                  'rgba(54, 162, 235, 1)',
-                                  'rgba(255, 206, 86, 1)',
-                                  'rgba(75, 192, 192, 1)',
-                                  'rgba(153, 102, 255, 1)',
-                                  'rgba(255, 159, 64, 1)'
-                              ],
-                              borderColor: [
-                                  'rgba(255, 99, 132, 1)',
-                                  'rgba(54, 162, 235, 1)',
-                                  'rgba(255, 206, 86, 1)',
-                                  'rgba(75, 192, 192, 1)',
-                                  'rgba(153, 102, 255, 1)',
-                                  'rgba(255, 159, 64, 1)'
-                              ],
-                              borderWidth: 1
-                          }]
-                      },
-                      options: {
-                          scales: {
-                              y: {
-                                  beginAtZero: true
-                              }
-                          }
-                      }
-                  });
-                </script>
-            </section>
-
-        </div>
+        <section class="pb-8 hidden md:block">
+            <div class="container px-6">
+                <div class="w-10/12  mx-auto px-8 py-10 pr-20 bg-blue-200 flex justify-between items-center flex-1">
+                        <h1 class="text-4xl">Sudah membuat tiket?</h1>
+                    <a href="/ticket/search" class="font-semibold text-white px-12 rounded py-8 bg-blue-600 border-2 border-blue-600 hover:border-blue-100 hover:bg-blue-500 transition-colors duration-200">
+                        Cek Status Tiket
+                    </a>
+                </div>
+            </div>
+        </section>
     
 </x-app-layout>

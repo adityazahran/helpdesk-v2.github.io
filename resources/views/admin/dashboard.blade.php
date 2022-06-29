@@ -21,28 +21,28 @@ use Carbon\Carbon;
     </div>
     {{-- Count Pemrosesan --}}
     <?php 
-        $terima = DB::table('tickets')->where('status', 'like', '%Diterima%')->count();
-        $proses = DB::table('tickets')->where('status', 'like', '%Diproses%')->count();
-        $pinjam = DB::table('tickets')->where('status', 'like', '%Dipinjam%')->count();
-        $selesai = DB::table('tickets')->where('status', 'like', '%Selesai%')->count();
-        $semua = DB::table('tickets')->where('status', '!=', 'Ditutup')->count();
-        $tutup = DB::table('tickets')->where('status', 'like', '%Ditutup%')->count();
+        $terima = DB::table('tickets')->where('status', 'like', '%Diterima%')->whereYear('created_at', date('Y'))->count();
+        $proses = DB::table('tickets')->where('status', 'like', '%Diproses%')->whereYear('created_at', date('Y'))->count();
+        $pinjam = DB::table('tickets')->where('status', 'like', '%Dipinjam%')->whereYear('created_at', date('Y'))->count();
+        $selesai = DB::table('tickets')->where('status', 'like', '%Selesai%')->whereYear('created_at', date('Y'))->count();
+        $semua = DB::table('tickets')->where('status', '!=', 'Ditutup')->whereYear('created_at', date('Y'))->count();
+        $tutup = DB::table('tickets')->where('status', 'like', '%Ditutup%')->whereYear('created_at', date('Y'))->count();
 
         // $timestamp = strtotime($new->created_at);
         // $month = date('m', $timestamp);
 
-        $jan = DB::table('tickets')->whereMonth('created_at', '01')->count();
-        $feb = DB::table('tickets')->whereMonth('created_at', '02')->count();
-        $mar = DB::table('tickets')->whereMonth('created_at', '03')->count();
-        $apr = DB::table('tickets')->whereMonth('created_at', '04')->count();
-        $mei = DB::table('tickets')->whereMonth('created_at', '05')->count();
-        $jun = DB::table('tickets')->whereMonth('created_at', '06')->count();
-        $jul = DB::table('tickets')->whereMonth('created_at', '07')->count();
-        $aug = DB::table('tickets')->whereMonth('created_at', '08')->count();
-        $sep = DB::table('tickets')->whereMonth('created_at', '09')->count();
-        $oct = DB::table('tickets')->whereMonth('created_at', '10')->count();
-        $nov = DB::table('tickets')->whereMonth('created_at', '11')->count();
-        $dec = DB::table('tickets')->whereMonth('created_at', '12')->count();
+        $jan = DB::table('tickets')->whereMonth('created_at', '01')->whereYear('created_at', date('Y'))->count();
+        $feb = DB::table('tickets')->whereMonth('created_at', '02')->whereYear('created_at', date('Y'))->count();
+        $mar = DB::table('tickets')->whereMonth('created_at', '03')->whereYear('created_at', date('Y'))->count();
+        $apr = DB::table('tickets')->whereMonth('created_at', '04')->whereYear('created_at', date('Y'))->count();
+        $mei = DB::table('tickets')->whereMonth('created_at', '05')->whereYear('created_at', date('Y'))->count();
+        $jun = DB::table('tickets')->whereMonth('created_at', '06')->whereYear('created_at', date('Y'))->count();
+        $jul = DB::table('tickets')->whereMonth('created_at', '07')->whereYear('created_at', date('Y'))->count();
+        $aug = DB::table('tickets')->whereMonth('created_at', '08')->whereYear('created_at', date('Y'))->count();
+        $sep = DB::table('tickets')->whereMonth('created_at', '09')->whereYear('created_at', date('Y'))->count();
+        $oct = DB::table('tickets')->whereMonth('created_at', '10')->whereYear('created_at', date('Y'))->count();
+        $nov = DB::table('tickets')->whereMonth('created_at', '11')->whereYear('created_at', date('Y'))->count();
+        $dec = DB::table('tickets')->whereMonth('created_at', '12')->whereYear('created_at', date('Y'))->count();
       ?>
 
     <script>
@@ -72,6 +72,14 @@ use Carbon\Carbon;
                 }]
             },
             options: {
+              plugins: {
+                  title: {
+                      display: true,
+                      text: 'Status Pemrosesan Tiket Tahun {{ date('Y') }}',
+                      align :  'start',
+                      color : '#4f4f4f',
+                  }
+              },
                 scales: {
                     y: {
                         beginAtZero: true
@@ -106,7 +114,14 @@ use Carbon\Carbon;
                 }]
             },
             options: {
-                
+                plugins: {
+                  title: {
+                      display: true,
+                      text: 'Total Tiket',
+                      align :  'start',
+                      color : '#4f4f4f',
+                  }
+              },
             }
         });
     }
@@ -154,6 +169,14 @@ use Carbon\Carbon;
                 }]
             },
             options: {
+              plugins: {
+                  title: {
+                      display: true,
+                      text: 'Grafik Tiket Masuk Tahun {{ date('Y') }}',
+                      align :  'start',
+                      color : '#4f4f4f',
+                  }
+              },
                 scales: {
                     y: {
                         beginAtZero: true
@@ -171,7 +194,7 @@ use Carbon\Carbon;
     <span>{{ $tiket->links() }}</span>
   </div>
   <hr>
-  <table class="table-auto border bg-white border-gray-400 overflow-x-auto whitespace-nowrap block">
+  <table class="table-auto border bg-white border-gray-400 overflow-x-auto whitespace-nowrap block mb-4">
     <thead class="border-t border-b border-gray-400 bg-gray-300">
 
       <tr class="text-gray-700">
