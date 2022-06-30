@@ -11,15 +11,15 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class ExportController extends Controller
 {
-    public function export_index(){
+    public function export_index()
+    {
 
         $tiket = Ticket::orderBy('id', 'desc')->paginate(5);
         return view('admin.export', ['tiket' => $tiket]);
-
     }
-    
 
-    
+
+
     public function export_cek(Request $request)
     {
 
@@ -31,16 +31,21 @@ class ExportController extends Controller
         // Table
         $dari = date($request->dari);
         $sampai = date($request->sampai);
-        
+
+        $dibuat = Ticket::all()->min('created_at');
+
         // $tiket = Ticket::orderBy('id', 'desc')->whereBetween('created_at', [$dari, $sampai])->paginate(5);
-        $tiket = Ticket::orderBy('id', 'desc')->where('created_at', '>=' , $dari ,'and','created_at', '<=' , $sampai)->paginate(5);
-        $tiket->appends($request->only('dari','sampai'));
-        
+        if ($dari > $dibuat) {
+            $tiket = Ticket::orderBy('id', 'desc')->where('created_at', '>=', $dari, 'and', 'created_at', '<=', $sampai)->paginate(5);
+            $tiket->appends($request->only('dari', 'sampai'));
 
-
-        return view('admin.export', [
-            'tiket' => $tiket,       
-        ]);
+            return view('admin.export', [
+                'tiket' => $tiket,
+            ]);
+        } else {
+            session()->flash('minexport', 'Tidak ada data yang dapat ditampilkan | Tiket pertama dibuat pada ' . $dibuat->format('d M Y'));
+            return redirect('admin/export');
+        }
     }
 
 
@@ -49,14 +54,20 @@ class ExportController extends Controller
         // Table
         $dari = date($request->dari);
         $sampai = date($request->sampai);
-        // $tiket = Ticket::where('created_at', [$dari]);
-        $nama_export = $dari."_".$sampai;
-        return Excel::download(new TicketsExport($dari, $sampai), $nama_export."_Helpdesk.xlsx");
+        $dibuat = Ticket::all()->min('created_at');
+        $nama_export = $dari . "_" . $sampai;
+
+        if ($dari > $dibuat){
+        return Excel::download(new TicketsExport($dari, $sampai), $nama_export . "_Helpdesk.xlsx");
+        } else {
+            session()->flash('minexport', 'Tidak ada data yang dapat di-export | Tiket pertama dibuat pada ' . $dibuat->format('d M Y'));
+            return redirect('admin/export');
+        }
     }
-    
-    public function export_all_ticket(){
-    
-        return Excel::download(new AllTicketExport, Time().'_Hepdesk_all.xlsx');
-    
+
+    public function export_all_ticket()
+    {
+
+        return Excel::download(new AllTicketExport, Time() . '_Hepdesk_all.xlsx');
     }
 }
