@@ -25,7 +25,7 @@ class ExportController extends Controller
 
         $request->validate([
             'dari' => 'required|date',
-            'sampai' => 'required|date',
+            'sampai' => 'required|date|after_or_equal:dari',
         ]);
 
         // Table
@@ -50,7 +50,6 @@ class ExportController extends Controller
         $dari = date($request->dari);
         $sampai = date($request->sampai);
         // $tiket = Ticket::where('created_at', [$dari]);
-        $judul = "Helpdesk_".$dari."_".$sampai.".xlsx";
         $nama_export = $dari."_".$sampai;
         return Excel::download(new TicketsExport($dari, $sampai), $nama_export."_Helpdesk.xlsx");
     }

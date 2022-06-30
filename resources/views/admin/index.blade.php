@@ -78,8 +78,7 @@
                   <p>nama   : {{ $t->nama }}</p>
                   <p>divisi   : {{ $t->divisi }}</p>
                   <p>alat      : {{ $t->alat }}</p>
-                <hr class="mt-4">
-                  <div class="tracking-wide leading">
+                  <div class="-mt-1 tracking-wide leading">
                       <p class="font-semibold">detail :</p>
                       @if ($t->keterangan = '-')
                       <p>Pengisi tiket tidak memberikan keterangan lanjut.</p>
@@ -91,6 +90,14 @@
                   <h3 class="mb-4 font-semibold">Lampiran Gambar : </h3>
                   <img width="300px" src="{{ url('/data_file/'.$t->file) }}">
                   @endif
+
+                  @auth  
+                  @if($t->updated_at != $t->created_at)
+                  <div class="absolute -bottom-10 left-2">
+                    <p class="text-sm text-left">Diedit tanggal : {{ $t->updated_at }}</p>
+                  </div>
+                  @endif
+                  @endauth
                 </div>
 
                 <div

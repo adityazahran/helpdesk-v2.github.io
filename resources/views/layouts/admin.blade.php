@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="/css/app.css" rel="stylesheet">
+
     <title>Admin - Helpdesk PT Tirta Asasta</title>
     
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -77,7 +78,7 @@
         </div>
         <nav class="text-white text-base font-semibold pt-3">
             <a href="/admin/dashboard"
-                class="flex items-center @if(url()->current() == url('/admin/dashboard')) active-nav-link @endif text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+                class="flex items-center f text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
                 <i class="fas fa-tachometer-alt mr-3"></i>
                 Dashboard
             </a>
@@ -115,7 +116,7 @@
                                 </a>
                             </li>
                             <li class="py-2 px-4">
-                                <a href="/admin/diterima" class="@if(url()->current() == url('/admin/diterima')) active-nav-link @endif flex justify-between">
+                                <a href="/admin/diterima" class=" flex justify-between">
                                     <div class="">
                                         
                                         <span>Diterima</span>
@@ -128,7 +129,7 @@
                                 </a>
                             </li>
                             <li class="py-2 px-4">
-                                <a href="/admin/diproses" class="@if(url()->current() == url('/admin/diproses')) active-nav-link @endif flex justify-between">
+                                <a href="/admin/diproses" class=" flex justify-between">
                                     <div class="">
                                         
                                         <span>Diproses</span>
@@ -141,7 +142,7 @@
                                 </a>
                             </li>
                             <li class="py-2 px-4">
-                                <a href="/admin/dipinjam" class="@if(url()->current() == url('/admin/dipinjam')) active-nav-link @endif flex justify-between">
+                                <a href="/admin/dipinjam" class=" flex justify-between">
                                     <div class="">
                                         
                                         <span>Dipinjam</span>
@@ -169,8 +170,7 @@
                     </div>
                 </div>
             </div>
-            <a href="/admin/ditutup" class="flex items-center @if(url()->current() == url('/admin/ditutup')) active-nav-link @endif
-                opacity-75 hover:opacity-100 text-white py-4 pl-6 nav-item">
+            <a href="/admin/ditutup" class="flex items-center                 opacity-75 hover:opacity-100 text-white py-4 pl-6 nav-item">
                 <i class="fas fa-sticky-note mr-3"></i>
                 Tiket Tutup
             </a>
