@@ -1,2 +1,3 @@
 # helpdesk-v2.github.io
-Upgrade Web Helpdesk ke tailwind v3 &amp; Laravel 9
+Aplikasi Web HelpDesk Internal sederhana yang gw buat ketika gw magang di PT Tirta Asasta Depok.
+Framework yang digunakan di projek ini adalah Laravel dan Tailwind CSS (Flowbite & Tailwind Component)
